@@ -4,7 +4,7 @@
 @include mat-core(); // load single css file -- only include this mixin once
 
 // Theme Palettes
-$firestarter-demo-primary: mat-palette($mat-light-blue, 600, 500, 700);
+$firestarter-demo-primary: mat-palette($mat-light-blue, 700, 600, 800);
 $firestarter-demo-accent: mat-palette($mat-green, 300, 200, 400);
 $firestarter-demo-warn: mat-palette($mat-red); // Optional (defaults to red)
 

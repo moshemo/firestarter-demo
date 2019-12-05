@@ -19,8 +19,14 @@
   </mat-sidenav>
 
   <mat-sidenav-content>
-    <mat-toolbar>
-      <button (click)="sidenav.toggle()">Toggle Sidenav</button>
+    <mat-toolbar color="primary">
+      <button
+        mat-icon-button
+        aria-label="Toggle sidebar"
+        (click)="sidenav.toggle()"
+      >
+        <mat-icon aria-label="Sidebar toggle icon">menu</mat-icon>
+      </button>
     </mat-toolbar>
     <ng-content></ng-content>
   </mat-sidenav-content>
