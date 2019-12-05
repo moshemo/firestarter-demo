@@ -27,6 +27,21 @@
       >
         <mat-icon aria-label="Sidebar toggle icon">menu</mat-icon>
       </button>
+      <div
+        class="font-thin text-xl select-none tracking-wide text-gray-200 uppercase"
+      >
+        <a routerLink="/">
+          startup<span class="font-normal pl-1 text-gray-100">reporter</span>
+        </a>
+        <span class="flex-grow"></span>
+        <div *ngIf="(isHandset$ | async)">
+          <a mat-button routerLink="/">Home</a>
+          <a mat-button routerLink="/News">News</a>
+          <a mat-button routerLink="/Advertise">Advertise</a>
+          <a mat-button routerLink="/About">About</a>
+          <a mat-button routerLink="/Newsletter">Newsletter</a>
+          <a mat-button routerLink="/Contact">Contact</a>
+        </div>
     </mat-toolbar>
     <ng-content></ng-content>
   </mat-sidenav-content>
