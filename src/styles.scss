@@ -1,1 +1,30 @@
-/* You can add global styles to this file, and also import other style files */
+// Custom Theming for Angular Material (https://material.angular.io/guide/theming)
+@import "~@angular/material/theming";
+
+@include mat-core(); // load single css file -- only include this mixin once
+
+// Theme Palettes
+$firestarter-demo-primary: mat-palette($mat-light-blue, 600, 500, 700);
+$firestarter-demo-accent: mat-palette($mat-green, 300, 200, 400);
+$firestarter-demo-warn: mat-palette($mat-red); // Optional (defaults to red)
+
+// Create Theme Object (Sass map containing all of the palettes).
+$firestarter-demo-theme: mat-light-theme(
+  $firestarter-demo-primary,
+  $firestarter-demo-accent,
+  $firestarter-demo-warn
+);
+
+// Theme styles for core and components
+// Alternative: import and @include the theme mixins for each component
+@include angular-material-theme($firestarter-demo-theme);
+
+// Global Styles/Imported Style Files
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
