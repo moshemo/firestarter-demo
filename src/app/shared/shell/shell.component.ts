@@ -9,8 +9,8 @@ import { map, shareReplay } from "rxjs/operators";
   styleUrls: ["./shell.component.scss"]
 })
 export class ShellComponent implements OnInit {
-  isHandset$: Observable<boolean> = this.breakpointObserver
-    .observe([Breakpoints.Handset])
+  isHandTab$: Observable<boolean> = this.breakpointObserver
+    .observe([Breakpoints.XSmall, Breakpoints.Small])
     .pipe(
       map(result => result.matches),
       shareReplay()

@@ -1,48 +1,98 @@
-<mat-sidenav-container class="sidenav-container">
+<mat-sidenav-container class="h-full">
   <mat-sidenav
     fixedInViewport
     #sidenav
-    class="sidenav"
-    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-    [mode]="(isHandset$ | async) ? 'over' : 'side'"
-    [opened]="true"
+    class="w-2/3"
+    [attr.role]="(isHandTab$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandTab$ | async) ? 'over' : 'side'"
+    [opened]="false"
   >
     <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item routerLink="/">Home</a>
-      <a mat-list-item routerLink="/News">News</a>
-      <a mat-list-item routerLink="/Advertise">Advertise</a>
-      <a mat-list-item routerLink="/About">About</a>
-      <a mat-list-item routerLink="/Newsletter">Newsletter</a>
-      <a mat-list-item routerLink="/Contact">Contact</a>
+      <a mat-list-item routerLink="/" (click)="sidenav.close()">Home</a>
+      <a mat-list-item routerLink="/News" (click)="sidenav.close()">News</a>
+      <a mat-list-item routerLink="/Advertise" (click)="sidenav.close()"
+        >Advertise</a
+      >
+      <a mat-list-item routerLink="/About" (click)="sidenav.close()">About</a>
+      <a mat-list-item routerLink="/Newsletter" (click)="sidenav.close()"
+        >Newsletter</a
+      >
+      <a mat-list-item routerLink="/Contact" (click)="sidenav.close()"
+        >Contact</a
+      >
     </mat-nav-list>
   </mat-sidenav>
 
   <mat-sidenav-content>
     <mat-toolbar color="primary">
-      <button
-        mat-icon-button
-        aria-label="Toggle sidebar"
-        (click)="sidenav.toggle()"
-      >
-        <mat-icon aria-label="Sidebar toggle icon">menu</mat-icon>
-      </button>
       <div
         class="font-thin text-xl select-none tracking-wide text-gray-200 uppercase"
       >
         <a routerLink="/">
-          startup<span class="font-normal pl-1 text-gray-100">reporter</span>
+          startup<span class="font-normal text-gray-100">reporter</span>
         </a>
       </div>
       <span class="flex-grow"></span>
-      <div *ngIf="!(isHandset$ | async)">
-        <a mat-button routerLink="/">Home</a>
-        <a mat-button routerLink="/News">News</a>
-        <a mat-button routerLink="/Advertise">Advertise</a>
-        <a mat-button routerLink="/About">About</a>
-        <a mat-button routerLink="/Newsletter">Newsletter</a>
-        <a mat-button routerLink="/Contact">Contact</a>
+      <div *ngIf="!(isHandTab$ | async)">
+        <a
+          mat-button
+          class="text-base"
+          style="height: 64px; line-height: 64px;"
+          routerLink="/"
+          >Home</a
+        >
+        <a
+          mat-button
+          class="text-base"
+          style="height: 64px; line-height: 64px;"
+          routerLink="/News"
+          >News</a
+        >
+        <a
+          mat-button
+          [matMenuTriggerFor]="subad"
+          class="text-base"
+          style="height: 64px; line-height: 64px;"
+          routerLink="/Advertise"
+          >Advertise</a
+        >
+        <mat-menu #subad="matMenu">
+          <a mat-menu-item routerLink="/banner-ads">Banner Ads</a>
+          <a mat-menu-item routerLink="/classifieds">Classifieds</a>
+          <a mat-menu-item routerLink="/events">Events</a>
+          <a mat-menu-item routerLink="/press-releases">Press Releases</a>
+        </mat-menu>
+        <a
+          mat-button
+          class="text-base"
+          style="height: 64px; line-height: 64px;"
+          routerLink="/About"
+          >About</a
+        >
+        <a
+          mat-button
+          class="text-base"
+          style="height: 64px; line-height: 64px;"
+          routerLink="/Newsletter"
+          >Newsletter</a
+        >
+        <a
+          mat-button
+          class="text-base"
+          style="height: 64px; line-height: 64px;"
+          routerLink="/Contact"
+          >Contact</a
+        >
       </div>
+      <button
+        mat-icon-button
+        aria-label="Toggle sidebar"
+        (click)="sidenav.toggle()"
+        *ngIf="isHandTab$ | async"
+      >
+        <mat-icon aria-label="Sidebar toggle icon">menu</mat-icon>
+      </button>
     </mat-toolbar>
     <ng-content></ng-content>
   </mat-sidenav-content>
